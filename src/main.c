@@ -93,7 +93,7 @@ int main(void)
 
     struct epoll_event event = {0};
 
-    event.events = EPOLLIN;
+    event.events = EPOLLIN | EPOLLET;
     event.data.ptr = NULL;
 
     if(epoll_ctl(
@@ -179,7 +179,7 @@ int main(void)
 
                     struct epoll_event client_event = {0};
 
-                    client_event.events = EPOLLIN;
+                    client_event.events = EPOLLIN | EPOLLET;
                     client_event.data.ptr = new_client;
 
                     if(epoll_ctl(
@@ -238,7 +238,7 @@ int main(void)
 
                                 struct epoll_event write_event = {0};
 
-                                write_event.events = EPOLLOUT;
+                                write_event.events = EPOLLOUT | EPOLLET;
                                 write_event.data.ptr = client;
 
                                 if(epoll_ctl(
